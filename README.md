@@ -51,6 +51,7 @@ function stepsToZero(n) {
     return stepsToZero(n-1);
   }
 }
+
 ```
 This function doesn't do anything meaningful, but hopefully it demonstrates the fundamental idea behind recursion. Simply put, recursion provides us a looping or repeating mechanism. It repeats an operation until a `base` condition is met. Let's step through an invocation of the above function to see how it evaluates.
 
