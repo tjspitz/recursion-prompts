@@ -193,20 +193,35 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
-
-  var letters = string.toLowerCase().split('');
-
-  // var letters = chars.filter(function(element) {
-  //   return (element !== ' ');
-  // });
-
-  var joiner = [];
-
-  if (letters.length === 0) {
-    return joiner;
+  var length = string.length;
+  string = string.toLowerCase();
+  
+  // base cases
+  if (length === 1 || (string[0] === string[1] && length === 2)) {
+    return true;
   }
-  joiner.push(letters.pop());
-  return joiner.concat(palindrome(letters.join(''))).join('') === string.toLowerCase();
+  if (string[0] !== string[length - 1]) {
+    return false;
+  }
+
+  //recursive case
+  // assign variable to sliced copy that includes idx 1 thru second-to-last
+  // invoke palindrome on sliced copy
+  var currentString = string.slice(1, length - 1);
+  return palindrome(currentString);
+
+
+
+
+  // var letters = string.toLowerCase().split('');
+
+  // var joiner = [];
+
+  // if (letters.length === 0) {
+  //   return joiner;
+  // }
+  // joiner.push(letters.pop());
+  // return joiner.concat(palindrome(letters.join(''))).join('') === string.toLowerCase();
 
 };
 
@@ -342,7 +357,7 @@ var replaceKeysInObj = function(obj, oldKey, newKey) {
       replaceKeysInObj(obj[key], oldKey, newKey);
     }
   }
-  
+
   return obj;
 };
 
